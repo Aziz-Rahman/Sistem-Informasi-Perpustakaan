@@ -1,0 +1,158 @@
+/*---------------------
+        Gallery
+--------------------- */
+
+.azz-gallery .azz-gallery-item {
+    position: relative;
+    /*display: inline-block;*/
+    padding-bottom: 30px;
+    height: 250px;
+}
+.azz-gallery .azz-gallery-item > a {
+    position: relative;
+    display: block;
+    background: #fff;
+    outline: none;
+}
+.azz-gallery .azz-gallery-row {
+    margin-bottom: -30px;
+}
+.azz-gallery .azz-gallery-item img {
+    min-width: 345px;
+    width: auto;
+    min-height: 250px;
+    height: 250px;
+    /*opacity: 1;*/
+   /* -webkit-transition: .2s opacity ease-in-out;
+    transition: .2s opacity ease-in-out;*/
+}
+.azz-gallery .azz-gallery-item > a:hover img {
+    opacity: 0.9;
+}
+.azz-gallery .azz-gallery-item .icon {
+    position: absolute;
+    font-size: 30px;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    opacity: 0;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    -webkit-transition: .2s opacity ease-in-out;
+    transition: .2s opacity ease-in-out;
+}
+.azz-gallery .azz-gallery-item > a:hover .icon {
+    opacity: 1;
+    /*z-index: 10;*/
+}
+
+/* remove spacing */
+.azz-gallery .azz-gallery-row.no-gutter {
+    margin: 0;
+}
+.azz-gallery .azz-gallery-row.no-gutter .azz-gallery-item {
+    padding: 0;
+}
+
+/* container */
+.azz-gallery .container.azz-gallery-layout-default {
+    padding: 93px 0;
+}
+
+/* fix horizontal scrollbar */
+.azz-gallery .azz-gallery-layout-default,
+.azz-gallery .azz-gallery-layout-article {
+    overflow: hidden;
+}
+
+/* article layout */
+.azz-gallery .azz-gallery-layout-article > div {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* lightbox */
+.azz-gallery .modal {
+    position: fixed;
+    overflow: hidden;
+    padding-right: 0 !important;
+}
+.azz-gallery .modal-body {
+    padding: 0;
+}
+.azz-gallery .modal-body img {
+    width: 100%;
+}
+.azz-gallery .modal .close {
+    position: absolute;
+    background-image: none;
+    font-size: 20px;
+    width: 54px;
+    height: 54px;
+    top: 20px;
+    right: 20px;
+    line-height: 54px;
+    opacity: 1;
+    color: #fff;
+    border: 2px solid #fff;
+    text-align: center;
+    text-shadow: none;
+    z-index: 5;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+}
+.azz-gallery .modal .close:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* modal back color opacity */
+.modal-backdrop.in {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+
+/* fix fade in effect */
+.azz-gallery .modal.fade .modal-dialog {
+    margin-top: -100px;
+    -webkit-transition: margin-top 0.3s ease-out;
+    -moz-transition: margin-top 0.3s ease-out;
+    -o-transition: margin-top 0.3s ease-out;
+    transition: margin-top 0.3s ease-out;
+}
+.azz-gallery .modal.in .modal-dialog,
+.azz-gallery .modal.fade .modal-dialog {
+    -webkit-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+}
+.azz-gallery .modal.in .modal-dialog {
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .azz-gallery .modal-dialog {
+        margin: 10px auto;
+    }
+
+    .azz-gallery .carousel-indicators,
+    .azz-gallery .carousel-control,
+    .azz-gallery .modal .close {
+        position: fixed;
+    }
+    .azz-gallery .azz-gallery-item img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .azz-gallery .azz-gallery-item img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+}
