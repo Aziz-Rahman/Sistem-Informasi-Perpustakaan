@@ -6,10 +6,9 @@ Sistem Informasi Perpustakaan sederhana ini dibangun dengan 2 tampilan, yaitu un
 # Fitur
 - Data petugas
 - Data member
-- Data buku
-    -> kategori buku
-    -> List buku
-    -> Status buku rusak / hilang
+- kategori buku
+- List buku
+- Status buku rusak / hilang
 - Peminjaman
 - Pengembalian
 - Kas ( Dari pengembalian buku yg telat & buku rusak/hilang )
