@@ -18,6 +18,7 @@ $returning = $rtn->display_returning();
                     <thead>
                         <tr class="headings">
                             <th>No</th>
+                            <th>Nama Peminjam</th>
                             <th>ID Pengembalian</th>
                             <th>ID Peminjaman</th>
                             <th>Tanggal Pinjam</th>
@@ -31,6 +32,7 @@ $returning = $rtn->display_returning();
                         <?php $no = 1; foreach( $returning as $data ) : ?>
                             <tr class="even pointer">
                                 <td><?php echo $no; ?></td>
+                                <td><?php echo $data['nama_lengkap']; ?></td>
                                 <td><?php echo $data['pengembalian_id']; ?></td>
                                 <td><?php echo $data['id_peminjaman']; ?></td>
                                 <td><?php echo $data['tgl_pinjam']; ?></td>

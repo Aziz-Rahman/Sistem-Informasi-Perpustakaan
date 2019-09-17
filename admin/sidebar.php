@@ -25,17 +25,17 @@
             <div class="menu_section">
                 <ul class="nav side-menu">
                     <li><a href="./"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                    <li><a href="?p=petugas"><i class="fa fa-user-secret"></i> Petugas</a></li>
-                    <li><a><i class="fa fa-book"></i> Data Buku <span class="fa fa-chevron-down"></span></a>
+                    <li><a href="?p=petugas"><i class="fa fa-user-secret"></i> Petugas Perpustakaan</a></li>
+                    <li><a href="?p=anggota"><i class="fa fa-users"></i> Anggota Perpustakaan</a></li>
+                    <li><a><i class="fa fa-book"></i> Buku Perpustakaan <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
                             <li><a href="?p=kategori">Kategori Buku</a></li>
                             <li><a href="?p=buku">Buku</a></li>
                             <li><a href="?p=data-status-buku">Status Buku ( <small>Rusak / Hilang</small> )</a></li>
                         </ul>
                     </li>
-                    <li><a href="?p=anggota"><i class="fa fa-users"></i> Data Anggota</a></li>
                     <li><a href="?p=peminjaman"><i class="fa fa-plus-square"></i> Peminjaman</a></li>
-                    <li><a href="?p=pengembalian"><i class="fa fa-table"></i> Pengembalian</a></li>
+                    <li><a href="?p=pengembalian"><i class="fa fa-table"></i> List Pengembalian</a></li>
                     <li><a href="?p=kas-perpus"><i class="fa fa-money"></i> Kas</a></li>
                     <li><a href="?p=laporan"><i class="fa fa-industry"></i> Laporan</a></li>
                     <li><a href="?p=pesan-masuk"><i class="fa fa-inbox"></i> Pesan Masuk</a></li>

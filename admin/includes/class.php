@@ -80,7 +80,7 @@ class Dashboard extends My_Connection {
 
 	public function count_of_borrowing_group_by_mounth() {
 		try {
-			$stmt = $this->db->prepare( "SELECT count(*) AS count_per_mounth FROM peminjaman GROUP BY MONTH(tgl_pinjam)" );
+			$stmt = $this->db->prepare( "SELECT count(*) AS count_per_mounth FROM peminjaman WHERE YEAR(tgl_pinjam) = YEAR(CURDATE()) GROUP BY MONTH(tgl_pinjam)" );
 			$stmt->execute();
 			return $stmt;
 		} catch( PDOException $e ) {
@@ -91,7 +91,12 @@ class Dashboard extends My_Connection {
 
 	public function borrowing_per_mounth() {
 		try {
-			$stmt = $this->db->prepare( "SELECT date_format(tgl_pinjam,'%b') AS bulan FROM peminjaman GROUP BY MONTH(tgl_pinjam)" );
+			$stmt = $this->db->prepare( "SELECT date_format(tgl_pinjam,'%b') AS bulan 
+											FROM peminjaman 
+											WHERE YEAR(tgl_pinjam) = YEAR(CURDATE())
+											GROUP BY MONTH(tgl_pinjam)" );
+
+			// WHERE YEAR(tgl_pinjam) = YEAR(CURDATE()) -> berdasarkan tahun ini
 			$stmt->execute();
 			return $stmt;
 		} catch( PDOException $e ) {
@@ -1153,7 +1158,12 @@ class Returning extends My_Connection {
 
 	public function display_returning() {
 		try {
-			$stmt = $this->db->prepare( "SELECT * FROM pengembalian JOIN peminjaman ON pengembalian.id_peminjaman = peminjaman.id_peminjaman ORDER BY pengembalian_id DESC" );
+			$stmt = $this->db->prepare( "SELECT pengembalian.pengembalian_id, pengembalian.id_peminjaman, anggota.nama_lengkap, peminjaman.tgl_pinjam, 
+												peminjaman.tgl_jatuh_tempo, pengembalian.tgl_kembali, pengembalian.denda
+											FROM pengembalian 
+											LEFT JOIN peminjaman ON pengembalian.id_peminjaman = peminjaman.id_peminjaman 
+											LEFT JOIN anggota ON peminjaman.anggota_id = anggota.anggota_id 
+											ORDER BY pengembalian.pengembalian_id DESC" );
 			$stmt->execute();
 			return $stmt;
 		} catch( PDOException $e ) {
@@ -1231,10 +1241,12 @@ class Kas extends My_Connection {
 	public function display_kas() {
 		try {
 			$stmt = $this->db->prepare( 
-				"SELECT kas_perpus.id_kas, kas_perpus.kas, kas_perpus.id_status_buku, kas_perpus.pengembalian_id, status_buku.tanggal, pengembalian.tgl_kembali 
+				"SELECT kas_perpus.id_kas, kas_perpus.kas, kas_perpus.id_status_buku, kas_perpus.pengembalian_id, anggota.nama_lengkap, peminjaman.id_peminjaman, status_buku.tanggal, pengembalian.tgl_kembali 
 				FROM kas_perpus 
 				LEFT JOIN status_buku ON kas_perpus.id_status_buku = status_buku.id_status_buku 
-				LEFT JOIN pengembalian ON kas_perpus.pengembalian_id = pengembalian.pengembalian_id"
+				LEFT JOIN pengembalian ON kas_perpus.pengembalian_id = pengembalian.pengembalian_id
+				LEFT JOIN peminjaman ON pengembalian.id_peminjaman = peminjaman.id_peminjaman 
+				LEFT JOIN anggota ON peminjaman.anggota_id = anggota.anggota_id"
 			);
 			$stmt->execute();
 			return $stmt;

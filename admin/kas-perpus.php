@@ -18,6 +18,8 @@ $get_data_kas = $ks->display_kas();
                     <thead>
                         <tr class="headings">
                             <th>No</th>
+                            <th>Nama Peminjam</th>
+                            <th>ID Peminjaman</th>
                             <th>ID Pengembalian</th>
                             <th>ID Status Buku</th>
                             <th>Tanggal</th>
@@ -29,8 +31,10 @@ $get_data_kas = $ks->display_kas();
                         <?php $no = 1; foreach( $get_data_kas as $data ) : ?>
                             <tr>
                                 <td><?php echo $no; ?></td>
+                                <td><?php if ( !empty( $data['nama_lengkap'] ) ) echo $data['nama_lengkap']; else echo '-'; ?></td>
+                                <td><?php if ( $data['id_peminjaman'] != 0 ) echo $data['id_peminjaman']; else echo '-'; ?></td>
                                 <td><?php if ( $data['pengembalian_id'] != 0 ) echo $data['pengembalian_id']; else echo '-'; ?></td>
-                                <td><?php if ( $data['id_status_buku'] != 0 ) echo $data['id_status_buku']; else echo '-'; ?></td>
+                                <td><?php if ( $data['id_status_buku'] != 0 ) echo $data['id_status_buku'] . ' <small>(Rusak / Hilang)</small>'; else echo '-'; ?></td>
                                 <td><?php if ( $data['id_status_buku'] != 0 ) echo $data['tanggal']; else echo $data['tgl_kembali']; ?></td>
                                 <td><?php echo $data['kas']; ?></td>
                             </tr>
